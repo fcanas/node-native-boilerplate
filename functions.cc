@@ -20,3 +20,10 @@ NAN_METHOD(aNumber) {
 	NanScope();
 	NanReturnValue(NanNew<v8::Number>(1.75));
 }
+
+NAN_METHOD(anObject) {
+	NanScope();
+	v8::Local<v8::Object> obj = NanNew<v8::Object>();
+	obj->Set(NanNew<v8::String>("key"), NanNew<v8::String>("value")); 
+	NanReturnValue(obj);
+}

@@ -18,4 +18,13 @@ describe('native extension', function() {
   it('should export function that returns a number', function() {
     assert.equal(typeof nativeExtension.aNumber(), 'number');
   });
+
+  it('should export function that returns an object', function() {
+    assert.equal(typeof nativeExtension.anObject(), 'object');
+  });
+
+  it('should export function that returns an object with a key, value pair', function() {
+    assert.deepEqual(nativeExtension.anObject(), {'key': 'value'});
+  });
+
 });
