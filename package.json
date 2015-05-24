@@ -1,13 +1,13 @@
 {
   "main": "index.js",
   "scripts": {
-    "compile": "node-gyp build",
+    "configure": "node-gyp configure",
+    "build": "node-gyp build",
     "test": "mocha"
   },
-  "dependencies": {
-    "nan": "^1.8.4"
-  },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "nan": "^1.8.4",
+    "mocha": "^2.2.5",
+    "node-gyp": "^1.0.3"
   }
 }
