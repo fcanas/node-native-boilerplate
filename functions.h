@@ -12,5 +12,6 @@ NAN_METHOD(aBoolean);
 NAN_METHOD(aNumber);
 NAN_METHOD(anObject);
 NAN_METHOD(anArray);
+NAN_METHOD(callback);
 
 #endif

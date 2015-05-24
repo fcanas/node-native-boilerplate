@@ -36,3 +36,16 @@ NAN_METHOD(anArray) {
 	arr->Set(2, NanNew<v8::Number>(3));
 	NanReturnValue(arr);
 }
+
+NAN_METHOD(callback) {
+ 	NanScope();
+
+ 	v8::Local<v8::Function> callbackHandle = args[0].As<v8::Function>();
+	NanCallback *callback = new NanCallback(callbackHandle);
+
+	callback->Call(0, NULL);
+
+	delete callback;
+
+  NanReturnUndefined();
+}

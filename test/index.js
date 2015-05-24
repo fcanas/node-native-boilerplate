@@ -35,4 +35,8 @@ describe('native extension', function() {
     assert.deepEqual(nativeExtension.anArray(), [1, 2, 3]);
   });
 
+  it('should export function that calls a callback', function(done) {
+    nativeExtension.callback(done);
+  });
+  
 });
