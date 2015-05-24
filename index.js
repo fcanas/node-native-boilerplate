@@ -1,2 +1,2 @@
-var NativeExtension = require("./build/Release/NativeExtension.node");
+var NativeExtension = require('bindings')('NativeExtension');
 module.exports = NativeExtension;
