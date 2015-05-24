@@ -27,4 +27,12 @@ describe('native extension', function() {
     assert.deepEqual(nativeExtension.anObject(), {'key': 'value'});
   });
 
+  it('should export function that returns an array', function() {
+    assert.equal(Array.isArray(nativeExtension.anArray()), true);
+  });
+
+  it('should export function that returns an array with some values', function() {
+    assert.deepEqual(nativeExtension.anArray(), [1, 2, 3]);
+  });
+
 });

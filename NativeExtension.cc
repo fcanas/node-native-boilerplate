@@ -21,6 +21,8 @@ void InitAll(Handle<Object> exports) {
     NanNew<FunctionTemplate>(aNumber)->GetFunction());
   exports->Set(NanNew<String>("anObject"),
     NanNew<FunctionTemplate>(anObject)->GetFunction());
+  exports->Set(NanNew<String>("anArray"),
+    NanNew<FunctionTemplate>(anArray)->GetFunction());
 }
 
 NODE_MODULE(NativeExtension, InitAll)
