@@ -15,3 +15,8 @@ NAN_METHOD(aBoolean) {
 	NanScope();
 	NanReturnValue(NanFalse());
 }
+
+NAN_METHOD(aNumber) {
+	NanScope();
+	NanReturnValue(NanNew<v8::Number>(1.75));
+}

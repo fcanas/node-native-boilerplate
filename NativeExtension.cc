@@ -17,6 +17,8 @@ void InitAll(Handle<Object> exports) {
     NanNew<FunctionTemplate>(aString)->GetFunction());
   exports->Set(NanNew<String>("aBoolean"),
     NanNew<FunctionTemplate>(aBoolean)->GetFunction());
+  exports->Set(NanNew<String>("aNumber"),
+    NanNew<FunctionTemplate>(aNumber)->GetFunction());
 }
 
 NODE_MODULE(NativeExtension, InitAll)

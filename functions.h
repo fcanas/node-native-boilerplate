@@ -9,5 +9,6 @@
 NAN_METHOD(nothing);
 NAN_METHOD(aString);
 NAN_METHOD(aBoolean);
+NAN_METHOD(aNumber);
 
 #endif
