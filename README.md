@@ -50,7 +50,7 @@ $ npm test -- watch
 
 * NativeExtension.cc
 
-A C++ file representing the top levle of the module. C++ constructs that are exposed to javascript are exported here
+A C++ file representing the top level of the module. C++ constructs that are exposed to javascript are exported here
 
 * functions.cc
 
