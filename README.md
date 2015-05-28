@@ -48,18 +48,9 @@ $ npm test -- watch
 
 ## The Parts
 
-* NativeExtension.cc
-
-A C++ file representing the top level of the module. C++ constructs that are exposed to javascript are exported here
-
-* functions.cc
-
-Example top-level functions. These functions demonstrate how to return various js types.
-
-* index.js
-
-The main entry point for the node dependency
-
-* binding.gyp
-
-This is the file that describes your node native extention to the build system (`node-gyp`). As you add source files to the project, you should also add them to the binding file.
+File | Contents
+-------------|----------------
+`NativeExtension.cc` | Represents the top level of the module. C++ constructs that are exposed to javascript are exported here
+`functions.cc` | Example top-level functions. These functions demonstrate how to build and return various js types.
+`index.js` | The main entry point for the node dependency
+`binding.gyp` | Describes your node native extention to the build system (`node-gyp`). As you add source files to the project, you should also add them to the binding file.
