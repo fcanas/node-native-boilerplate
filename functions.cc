@@ -1,45 +1,35 @@
-#include <nan.h>
 #include "functions.h"
 
 NAN_METHOD(nothing) {
-    NanScope();
-    NanReturnUndefined();
 }
 
 NAN_METHOD(aString) {
-    NanScope();
-    NanReturnValue(NanNew<v8::String>("This is a thing."));
+    info.GetReturnValue().Set(Nan::New("This is a thing.").ToLocalChecked());
 }
 
 NAN_METHOD(aBoolean) {
-    NanScope();
-    NanReturnValue(NanFalse());
+    info.GetReturnValue().Set(false);
 }
 
 NAN_METHOD(aNumber) {
-    NanScope();
-    NanReturnValue(NanNew<v8::Number>(1.75));
+    info.GetReturnValue().Set(1.75);
 }
 
 NAN_METHOD(anObject) {
-    NanScope();
-    v8::Local<v8::Object> obj = NanNew<v8::Object>();
-    obj->Set(NanNew<v8::String>("key"), NanNew<v8::String>("value")); 
-    NanReturnValue(obj);
+    v8::Local<v8::Object> obj = Nan::New<v8::Object>();
+    Nan::Set(obj, Nan::New("key").ToLocalChecked(), Nan::New("value").ToLocalChecked());
+    info.GetReturnValue().Set(obj);
 }
 
 NAN_METHOD(anArray) {
-    NanScope();
-    v8::Local<v8::Array> arr = NanNew<v8::Array>(3);
-    arr->Set(0, NanNew<v8::Number>(1));
-    arr->Set(1, NanNew<v8::Number>(2));
-    arr->Set(2, NanNew<v8::Number>(3));
-    NanReturnValue(arr);
+    v8::Local<v8::Array> arr = Nan::New<v8::Array>(3);
+    Nan::Set(arr, 0, Nan::New(1));
+    Nan::Set(arr, 1, Nan::New(2));
+    Nan::Set(arr, 2, Nan::New(3));
+    info.GetReturnValue().Set(arr);
 }
 
 NAN_METHOD(callback) {
-    NanScope();
-    v8::Local<v8::Function> callbackHandle = args[0].As<v8::Function>();
-    NanMakeCallback(NanGetCurrentContext()->Global(), callbackHandle, 0, NULL);
-    NanReturnUndefined();
+    v8::Local<v8::Function> callbackHandle = info[0].As<v8::Function>();
+    Nan::MakeCallback(Nan::GetCurrentContext()->Global(), callbackHandle, 0, 0);
 }
