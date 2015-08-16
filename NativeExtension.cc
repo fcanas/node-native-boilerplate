@@ -1,30 +1,25 @@
-#include <node.h>
-#include <nan.h>
 #include "functions.h"
 
 using v8::FunctionTemplate;
-using v8::Handle;
-using v8::Object;
-using v8::String;
 
-// NativeExtension.cc represents the top level of the module. 
+// NativeExtension.cc represents the top level of the module.
 // C++ constructs that are exposed to javascript are exported here
 
-void InitAll(Handle<Object> exports) {
-  exports->Set(NanNew<String>("nothing"),
-    NanNew<FunctionTemplate>(nothing)->GetFunction());
-  exports->Set(NanNew<String>("aString"),
-    NanNew<FunctionTemplate>(aString)->GetFunction());
-  exports->Set(NanNew<String>("aBoolean"),
-    NanNew<FunctionTemplate>(aBoolean)->GetFunction());
-  exports->Set(NanNew<String>("aNumber"),
-    NanNew<FunctionTemplate>(aNumber)->GetFunction());
-  exports->Set(NanNew<String>("anObject"),
-    NanNew<FunctionTemplate>(anObject)->GetFunction());
-  exports->Set(NanNew<String>("anArray"),
-    NanNew<FunctionTemplate>(anArray)->GetFunction());
-  exports->Set(NanNew<String>("callback"),
-    NanNew<FunctionTemplate>(callback)->GetFunction());
+NAN_MODULE_INIT(InitAll) {
+  Nan::Set(target, Nan::New("nothing").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(nothing)).ToLocalChecked());
+  Nan::Set(target, Nan::New("aString").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(aString)).ToLocalChecked());
+  Nan::Set(target, Nan::New("aBoolean").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(aBoolean)).ToLocalChecked());
+  Nan::Set(target, Nan::New("aNumber").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(aNumber)).ToLocalChecked());
+  Nan::Set(target, Nan::New("anObject").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(anObject)).ToLocalChecked());
+  Nan::Set(target, Nan::New("anArray").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(anArray)).ToLocalChecked());
+  Nan::Set(target, Nan::New("callback").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(callback)).ToLocalChecked());
 }
 
 NODE_MODULE(NativeExtension, InitAll)

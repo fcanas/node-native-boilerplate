@@ -6,7 +6,7 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "nan": "^1.8.4",
+    "nan": "^2.0.5",
     "mocha": "^2.2.5",
     "node-gyp": "^1.0.3"
   },
