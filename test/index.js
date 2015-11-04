@@ -3,6 +3,13 @@ var assert = require('assert');
 
 
 describe('native extension', function() {
+  it('should export a wrapped object', function() {
+    var obj = new nativeExtension.MyObject(0);
+    assert.equal(obj.plusOne(), 1);
+    assert.equal(obj.plusOne(), 2);
+    assert.equal(obj.plusOne(), 3);
+  });
+
   it('should export function that returns nothing', function() {
     assert.equal(nativeExtension.nothing(), undefined);
   });
