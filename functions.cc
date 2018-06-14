@@ -31,7 +31,8 @@ NAN_METHOD(anArray) {
 
 NAN_METHOD(callback) {
     v8::Local<v8::Function> callbackHandle = info[0].As<v8::Function>();
-    Nan::MakeCallback(Nan::GetCurrentContext()->Global(), callbackHandle, 0, 0);
+    Nan::AsyncResource* resource = new Nan::AsyncResource(Nan::New<v8::String>("MyObject:CallCallback").ToLocalChecked());
+    resource->runInAsyncScope(Nan::GetCurrentContext()->Global(), callbackHandle, 0, 0);
 }
 
 // Wrapper Impl
@@ -62,10 +63,10 @@ NAN_METHOD(MyObject::New) {
     obj->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
   } else {
-    const int argc = 1; 
+    const int argc = 1;
     v8::Local<v8::Value> argv[argc] = {info[0]};
     v8::Local<v8::Function> cons = Nan::New(constructor);
-    info.GetReturnValue().Set(cons->NewInstance(argc, argv));
+    info.GetReturnValue().Set(Nan::NewInstance(cons, argc, argv).ToLocalChecked());
   }
 }
 
