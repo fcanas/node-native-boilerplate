@@ -45,5 +45,12 @@ describe('native extension', function() {
   it('should export function that calls a callback', function(done) {
     nativeExtension.callback(done);
   });
-  
+
+  it('should export function that calls a callback with a parameter', function(done) {
+    nativeExtension.callbackWithParameter(function (callbackParameter){
+      assert.equal(callbackParameter, 'parameter test');
+      done();
+    });
+  });
+
 });
