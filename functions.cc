@@ -35,6 +35,15 @@ NAN_METHOD(callback) {
     resource->runInAsyncScope(Nan::GetCurrentContext()->Global(), callbackHandle, 0, 0);
 }
 
+NAN_METHOD(callbackWithParameter) {
+    v8::Local<v8::Function> callbackHandle = info[0].As<v8::Function>();
+    Nan::AsyncResource* resource = new Nan::AsyncResource(Nan::New<v8::String>("MyObject:CallCallbackWithParam").ToLocalChecked());
+    v8::Local<v8::Value> argv[] = {
+        Nan::New("parameter test").ToLocalChecked()
+    };
+    resource->runInAsyncScope(Nan::GetCurrentContext()->Global(), callbackHandle, 1, argv);
+}
+
 // Wrapper Impl
 
 Nan::Persistent<v8::Function> MyObject::constructor;

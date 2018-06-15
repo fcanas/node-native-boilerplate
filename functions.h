@@ -13,6 +13,7 @@ NAN_METHOD(aNumber);
 NAN_METHOD(anObject);
 NAN_METHOD(anArray);
 NAN_METHOD(callback);
+NAN_METHOD(callbackWithParameter);
 
 // Example with node ObjectWrap
 // Based on https://nodejs.org/api/addons.html#addons_wrapping_c_objects but using NAN
