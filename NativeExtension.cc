@@ -6,6 +6,8 @@ using v8::FunctionTemplate;
 // C++ constructs that are exposed to javascript are exported here
 
 NAN_MODULE_INIT(InitAll) {
+  Nan::Set(target, Nan::New("sumWithParams").ToLocalChecked(),
+    Nan::GetFunction(Nan::New<FunctionTemplate>(sumWithParams)).ToLocalChecked());
   Nan::Set(target, Nan::New("nothing").ToLocalChecked(),
     Nan::GetFunction(Nan::New<FunctionTemplate>(nothing)).ToLocalChecked());
   Nan::Set(target, Nan::New("aString").ToLocalChecked(),

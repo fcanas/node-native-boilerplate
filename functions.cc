@@ -29,6 +29,17 @@ NAN_METHOD(anArray) {
     info.GetReturnValue().Set(arr);
 }
 
+NAN_METHOD(sumWithParams) {
+    if (info.Length() < 2) {
+        Nan::ThrowTypeError("Missing Arguments!");
+        return;
+    }
+    double arg0 = Nan::To<double>(info[0]).FromJust();
+    double arg1 = Nan::To<double>(info[1]).FromJust();
+    v8::Local<v8::Number> num = Nan::New(arg0 + arg1);
+    info.GetReturnValue().Set(num);
+}
+
 NAN_METHOD(callback) {
     v8::Local<v8::Function> callbackHandle = info[0].As<v8::Function>();
     Nan::AsyncResource* resource = new Nan::AsyncResource(Nan::New<v8::String>("MyObject:CallCallback").ToLocalChecked());
