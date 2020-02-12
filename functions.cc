@@ -30,15 +30,12 @@ NAN_METHOD(anArray) {
 }
 
 NAN_METHOD(sumWithParams) {
-    v8::Local<v8::Context> context = info.GetIsolate()->GetCurrentContext();
-
     if (info.Length() < 2) {
         Nan::ThrowTypeError("Missing Arguments!");
         return;
     }
-
-    double arg0 = info[0]->NumberValue(context).FromJust();
-    double arg1 = info[1]->NumberValue(context).FromJust();
+    double arg0 = Nan::To<double>(info[0]).FromJust();
+    double arg1 = Nan::To<double>(info[1]).FromJust();
     v8::Local<v8::Number> num = Nan::New(arg0 + arg1);
     info.GetReturnValue().Set(num);
 }
