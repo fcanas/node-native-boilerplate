@@ -13,6 +13,7 @@ NAN_METHOD(aNumber);
 NAN_METHOD(anObject);
 NAN_METHOD(anArray);
 NAN_METHOD(callback);
+NAN_METHOD(sumWithParams);
 NAN_METHOD(callbackWithParameter);
 
 // Example with node ObjectWrap

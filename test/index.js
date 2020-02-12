@@ -42,10 +42,19 @@ describe('native extension', function() {
     assert.deepEqual(nativeExtension.anArray(), [1, 2, 3]);
   });
 
+  it('should sum 1,1 and result 2', function() {
+    assert.strictEqual(nativeExtension.sumWithParams(1,1), 2);
+  });
+ 
+  it('should throw error when called with missing parameter', function() {
+    assert.throws(() => nativeExtension.sumWithParams(1), TypeError)
+    assert.throws(() => nativeExtension.sumWithParams(), TypeError)
+  });
+
   it('should export function that calls a callback', function(done) {
     nativeExtension.callback(done);
   });
-
+ 
   it('should export function that calls a callback with a parameter', function(done) {
     nativeExtension.callbackWithParameter(function (callbackParameter){
       assert.equal(callbackParameter, 'parameter test');
