@@ -47,8 +47,12 @@ describe('native extension', function() {
   });
  
   it('should throw error when called with missing parameter', function() {
-    assert.throws(() => nativeExtension.sumWithParams(1), TypeError)
-    assert.throws(() => nativeExtension.sumWithParams(), TypeError)
+    assert.throws(function () {
+      nativeExtension.sumWithParams(1);
+    }, TypeError)
+    assert.throws(function () {
+      nativeExtension.sumWithParams();
+    }, TypeError)
   });
 
   it('should export function that calls a callback', function(done) {
